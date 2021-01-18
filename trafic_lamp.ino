@@ -29,7 +29,7 @@ void loop()
   aftertime = millis(); 
 
   if(aftertime-beforetime > 1000){
-    zaman++;
+   time++;
     beforetime = aftertime;
   }
      
@@ -90,7 +90,7 @@ void loop()
      time= 0;
       
     }else if(time< 30){
-      int KalanSn = 30 - zaman;
+      int KalanSn = 30 -time;
       delay(KalanSn*1000);
          digitalWrite(cargreenlight,LOW);
       delay(500);
