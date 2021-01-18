@@ -1,36 +1,36 @@
 const int buttonPin = 3;
-const int yayakirmizled = 13; 
-const int yayayesilled = 11; 
-const int aracyesilled = 6; 
-const int aracsariled = 8; 
-const int arackirmizled = 10; 
+const int walkerredlight = 13; 
+const int walkergreenlight= 11; 
+const int cargreenlight = 6; 
+const int caryellowlight = 8; 
+const int carredlight = 10; 
 bool toggleState = false;
-unsigned long simdizaman;
-unsigned long oncezaman=0;
-int zaman = 0;
+unsigned long aftertime;
+unsigned long beforetime=0;
+int time= 0;
 
 void setup()
 {
    pinMode(buttonPin, INPUT_PULLUP);
-   pinMode(aracyesilled, OUTPUT);
-   pinMode(aracsariled, OUTPUT);
-   pinMode(arackirmizled, OUTPUT);
-   pinMode(yayakirmizled, OUTPUT);
+   pinMode(cargreenlight, OUTPUT);
+   pinMode(caryellowlight, OUTPUT);
+   pinMode(carredlight, OUTPUT);
+   pinMode(walkerredlight, OUTPUT);
    pinMode(yayayesilled, OUTPUT);
    Serial.begin(9600);
-   digitalWrite(aracyesilled,HIGH);
-   digitalWrite(yayakirmizled,HIGH);
+   digitalWrite(cargreenlight,HIGH);
+   digitalWrite(walkerredlight,HIGH);
   
 }
 
 void loop()
 {
 
-  simdizaman = millis(); 
+  aftertime = millis(); 
 
-  if(simdizaman-oncezaman > 1000){
+  if(aftertime-beforetime > 1000){
     zaman++;
-    oncezaman = simdizaman;
+    beforetime = aftertime;
   }
      
  int readButton = digitalRead(buttonPin);
@@ -39,28 +39,28 @@ void loop()
     
     toggleState = ! toggleState;
         
-    if (zaman > 30){
+    if (time> 30){
 
-     digitalWrite(aracyesilled,LOW);
+     digitalWrite(cargreenlight,LOW);
      delay(500);
-     digitalWrite(aracyesilled,HIGH); 
+     digitalWrite(cargreenlight,HIGH); 
      delay(1000);
-     digitalWrite(aracyesilled,LOW);
+     digitalWrite(cargreenlight,LOW);
      delay(500);
-     digitalWrite(aracyesilled,HIGH); 
+     digitalWrite(cargreenlight,HIGH); 
      delay(1000); 
-     digitalWrite(aracyesilled,LOW);
+     digitalWrite(cargreenlight,LOW);
      delay(500);
-     digitalWrite(aracyesilled,HIGH); 
+     digitalWrite(cargreenlight,HIGH); 
      delay(1000);        
-     digitalWrite(aracyesilled,LOW);       
+     digitalWrite(cargreenlight,LOW);       
      delay(1000);             
-     digitalWrite(aracsariled,HIGH);  
+     digitalWrite(caryellowlight,HIGH);  
      delay(3000);           
-     digitalWrite(aracsariled,LOW);  
-     digitalWrite(arackirmizled,HIGH);
+     digitalWrite(caryellowlight,LOW);  
+     digitalWrite(carredlight,HIGH);
      digitalWrite(yayayesilled,HIGH); 
-     digitalWrite(yayakirmizled,LOW); 
+     digitalWrite(walkerredlight,LOW); 
      delay(15000);       
   
      digitalWrite(yayayesilled,LOW); 
@@ -77,41 +77,41 @@ void loop()
             delay(500);
     digitalWrite(yayayesilled,LOW); 
          delay(1000);
-    digitalWrite(yayakirmizled,HIGH);    
+    digitalWrite(walkerredlight,HIGH);    
        delay(5000);
              
-     digitalWrite(aracsariled,HIGH);  
+     digitalWrite(caryellowlight,HIGH);  
       delay(2000);
              
-     digitalWrite(aracsariled,LOW);  
-     digitalWrite(arackirmizled,LOW);  
-     digitalWrite(aracyesilled,HIGH);  
+     digitalWrite(caryellowlight,LOW);  
+     digitalWrite(carredlight,LOW);  
+     digitalWrite(cargreenlight,HIGH);  
       
-     zaman = 0;
+     time= 0;
       
-    }else if(zaman < 30){
+    }else if(time< 30){
       int KalanSn = 30 - zaman;
       delay(KalanSn*1000);
-         digitalWrite(aracyesilled,LOW);
+         digitalWrite(cargreenlight,LOW);
       delay(500);
-     digitalWrite(aracyesilled,HIGH); 
+     digitalWrite(cargreenlight,HIGH); 
      delay(1000);
-     digitalWrite(aracyesilled,LOW);
+     digitalWrite(cargreenlight,LOW);
      delay(500);
-     digitalWrite(aracyesilled,HIGH); 
+     digitalWrite(cargreenlight,HIGH); 
      delay(1000); 
-     digitalWrite(aracyesilled,LOW);
+     digitalWrite(cargreenlight,LOW);
      delay(500);
-     digitalWrite(aracyesilled,HIGH); 
+     digitalWrite(cargreenlight,HIGH); 
      delay(1000);      
-     digitalWrite(aracyesilled,LOW);       
+     digitalWrite(cargreenlight,LOW);       
      delay(1000);           
-     digitalWrite(aracsariled,HIGH);  
+     digitalWrite(caryellowlight,HIGH);  
      delay(3000);         
-     digitalWrite(aracsariled,LOW);  
-     digitalWrite(arackirmizled,HIGH);
+     digitalWrite(caryellowlight,LOW);  
+     digitalWrite(carredlight,HIGH);
      digitalWrite(yayayesilled,HIGH); 
-     digitalWrite(yayakirmizled,LOW); 
+     digitalWrite(walkerredlight,LOW); 
      delay(15000);   
  
     digitalWrite(yayayesilled,LOW); 
@@ -128,15 +128,15 @@ void loop()
       delay(500);
     digitalWrite(yayayesilled,LOW); 
       delay(1000);
-    digitalWrite(yayakirmizled,HIGH);    
+    digitalWrite(walkerredlight,HIGH);    
       delay(5000);
-    digitalWrite(aracsariled,HIGH);  
+    digitalWrite(caryellowlight,HIGH);  
       delay(2000);
              
-     digitalWrite(aracsariled,LOW);  
-     digitalWrite(arackirmizled,LOW);  
-     digitalWrite(aracyesilled,HIGH);   
-     zaman = 0;
+     digitalWrite(caryellowlight,LOW);  
+     digitalWrite(carredlight,LOW);  
+     digitalWrite(cargreenlight,HIGH);   
+     time= 0;
     }
     delay(500);
   }
